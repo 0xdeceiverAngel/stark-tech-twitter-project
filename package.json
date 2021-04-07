@@ -1,0 +1,29 @@
+{
+    "name": "stark-tech-twitter-project",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "compile": "tsc main.ts",
+        "run": "node main.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/0xdeciverAngel/stark-tech-twitter-project.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/0xdeciverAngel/stark-tech-twitter-project/issues"
+    },
+    "homepage": "https://github.com/0xdeciverAngel/stark-tech-twitter-project#readme",
+    "dependencies": {
+        "apollo-server": "^2.22.2",
+        "bcrypt": "^5.0.1",
+        "express": "^4.17.1",
+        "express-graphql": "^0.12.0",
+        "graphql": "^15.5.0",
+        "jsonwebtoken": "^8.5.1"
+    }
+}
