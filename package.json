@@ -1,12 +1,18 @@
 {
     "name": "stark-tech-twitter-project",
     "version": "1.0.0",
-    "description": "",
+    "description": "Create a twitter style api. Can use any stack, but must be deployable and of production quality.\r Try using graphql or grpc for fun, but REST is ok too. (recommend graphql or swagger v2)",
     "main": "index.js",
+    "dependencies": {
+        "@types/node": "^14.14.37",
+        "apollo-server": "^2.22.2",
+        "graphql": "^15.5.0",
+        "nodemon": "^2.0.7",
+        "typescript": "^4.2"
+    },
+    "devDependencies": {},
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "compile": "tsc main.ts",
-        "run": "node main.js"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
@@ -17,12 +23,5 @@
     "bugs": {
         "url": "https://github.com/0xdeciverAngel/stark-tech-twitter-project/issues"
     },
-    "homepage": "https://github.com/0xdeciverAngel/stark-tech-twitter-project#readme",
-    "dependencies": {
-        "apollo-server": "^2.22.2",
-        "express": "^4.17.1",
-        "express-graphql": "^0.12.0",
-        "graphql": "^15.5.0",
-        "mongodb": "^3.6.6"
-    }
+    "homepage": "https://github.com/0xdeciverAngel/stark-tech-twitter-project#readme"
 }

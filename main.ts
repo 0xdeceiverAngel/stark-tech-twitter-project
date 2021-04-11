@@ -1,7 +1,9 @@
+// declare function require(name:string);
 const {
     ApolloServer,
     gql
 } = require('apollo-server');
+const fs = require('fs');
 var arr: number[] = [];
 let user_model_data = [{
         "id": 0,
@@ -48,8 +50,8 @@ const typeDefs = gql `
   }
   type Query {
     list_all_user: [user_model] 
-    list_all_tweet: [tweet_model]
-    list_followers(id: ID!): [ID]
+    list_all_tweets: [tweet_model]
+    list_followers(id: ID!): [user_model]
     list_tweet(id:ID!):[tweet_model]
     test:String
   }
@@ -61,17 +63,23 @@ const typeDefs = gql `
 const resolvers = {
     Query: {
         list_all_user: () => user_model_data,
-        list_all_tweet: () => tweet_model_data,
+        list_all_tweets: () => tweet_model_data,
         list_followers: (parent:any, args:any, context:any) => {
             const {
                 id
             } = args;
             let res = user_model_data.filter(function(item) {
-                if (item.id == id) {
-                    return 'mark';
-                }
+                return item.id == id;
             });
-            return res[0].followers;
+            let followers:any=[];
+            for(const item_id in res[0].followers){
+                let n_item_id = parseInt(item_id,10);
+                let found = user_model_data.filter(function (item) {
+                    return item.id == n_item_id;
+                });
+                followers=followers.concat(found);
+            }
+            return followers;
         },
         list_tweet: (parent:any, args:any, context:any) => {
             const {
@@ -131,8 +139,16 @@ const server = new ApolloServer({
     typeDefs,
     resolvers
 });
-server.listen().then(({
-    url=null
-}) => {
-    console.log(`? Server ready at ${url}`);
-});
+try{
+    server.listen().then(({
+        url = null
+    }) => {
+        console.log(`? Server ready at ${url}`);
+    });
+}
+catch(e){
+    console.log(e);
+    fs.appendFile('errorlog.txt',e,function(err:any){
+        if(err)return console.log(err);
+    })
+}
