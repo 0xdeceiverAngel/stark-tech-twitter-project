@@ -16,8 +16,13 @@ The API should have these features.
 Show how a production level project would look. (documentation, testing, error handling, etc ...)
 
 Comment the project repo below when ready.
-
-
+## Tech
+- Nodejs
+- ApolloServer
+- Docker 
+- Graphql
+## Demo
+[![](http://img.youtube.com/vi/GohzIJSpaLg/0.jpg)](http://www.youtube.com/watch?v=GohzIJSpaLg "")
 ## Getting started 
 open terminal,enter below command
 
@@ -26,9 +31,40 @@ open terminal,enter below command
 `sudo docker run -itd -p 4000:4000 --rm nodev1`
 
 then visit `127.0.0.1:4000`
+
+---
+Already have default data inside
+```js
+let arr: number[] = [];
+let user_model_data = [{
+        "id": 0,
+        "name": "Alice",
+        "followers": [1, 2],
+        "tweets": [0]
+    },
+    {
+        "id": 1,
+        "name": "Bob",
+        "followers":arr,
+        "tweets": arr
+    }
+    , {
+        "id": 2,
+        "name": "Cindy",
+        "followers": arr,
+        "tweets": arr
+    }
+];
+let tweet_model_data = [{
+    "id": 0,
+    "title": "hello",
+    "content": "hello",
+    "user": 1
+}];
+```
 ### Api doc
 #### Schema
-```json
+```graphql
 type user_model {
   id: ID
   name: String
@@ -100,4 +136,5 @@ Error will be save to `errorlog.txt`
 - terminal set `export NODE_ENV=production`
 - use nginx
 - use nodemon to monitor restart
+- use other node package to record log
 - etc....
